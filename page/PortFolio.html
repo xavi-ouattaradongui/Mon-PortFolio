@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Portfolio de Dongui OUATTARA">
+	<meta name="author" content="Dongui OUATTARA">
+	<meta name="keywords" content="Portfolio, Développeur Web, Projets, HTML, CSS">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>Portfolio - Dongui OUATTARA</title>
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			font-family: 'Inter', Arial, sans-serif;
+			background: linear-gradient(135deg, #fef9f3, #e8f0fb, #fff1e6, #fbe8f0, #f0fff9);
+			color: #333;
+			overflow-x: hidden;
+			background-size: 400% 400%;
+			animation: gradientShift 15s ease infinite;
+		}
+
+		/* Animation subtile pour un effet vivant */
+		@keyframes gradientShift {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+
+		/* En-tête */
+		#header {
+			display: flex;
+			justify-content: space-between;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			border-radius: 30px;
+			margin: 30px 50px 0 40px;
+			padding: 10px 16px;
+			height: auto;
+			animation: slideInDown 1.5s ease-out;
+			align-items: center;
+		}
+
+		/* Logo */
+		#logo {
+			margin-left: 10px;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		#logo:hover {
+			transform: rotate(360deg) scale(1.2);
+			box-shadow: 0 0 20px #fda766;
+			border-radius: 360px;
+		}
+
+		/* Titre "Portfolio" */
+		#PortFolio {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		#PortFolio:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* Navigation links */
+		.about-contact {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		.about-contact:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* Animation pour simuler une machine à écrire */
+		@keyframes typing {
+			from {
+				width: 0;
+			}
+			to {
+				width: 100%;
+			}
+		}
+
+		/* Animation pour faire clignoter le curseur */
+		@keyframes blink-caret {
+			from, to {
+				border-color: transparent;
+			}
+			50% {
+				border-color: white;
+			}
+		}
+
+		#pre {
+			color: rgb(49, 47, 47);
+			font-size: 17px;
+			margin-top: 200px;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 100%;
+			animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+		}
+
+		/* Section des projets */
+		#projects {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 50vh;
+			text-align: center;
+			font-size: 6rem;
+			margin: 0;
+			color: rgb(49, 47, 47);
+		}
+
+		#ContainerProjects {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 10px;
+			margin-top: 100px;
+		}
+
+		#Projet2 {
+			grid-column: 2/4;
+		}
+
+		#Projet4 {
+			grid-column: 1/3;
+		}
+
+		#Projet7 {
+			grid-column: 1/3;
+		}
+
+		#Projet8 {
+			grid-column: 3/5;
+		}
+
+		.Cadre {
+			width: 100%;
+			height: 300px;
+			display: flex;
+			flex-direction: column;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.Cadre:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+		}
+
+		.img {
+			width: 100%;
+			height: 80%;
+			visibility: hidden;
+			transition: visibility .3s ease-in-out, opacity 0.3s ease-in-out;
+		}
+
+		.Cadre:hover .img {
+			margin-top: 0px;
+			cursor: pointer;
+			visibility: visible;
+		}
+
+		p {
+			font-size: 12px;
+			margin-left: 10px;
+			 font-family: "Poppins", sans-serif;
+		}
+		h1 {
+			font-size: 20px;
+			margin-left: 10px;
+			 font-family: "Poppins", sans-serif;
+		}
+
+		/* ======================= FOOTER ======================= */
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			margin-top: 100px;
+			padding: 12px 20px;
+		}
+
+		/* Contact "Contact Me" animé */
+		#ContactMe {
+			font-size: 30px;
+			animation: ContactMe 2s infinite;
+			text-align: center;
+			color: #fda766;
+		}
+
+		#ContactMe:hover {
+			transform: scale(1.2);
+			text-shadow: 0 0 10px white;
+		}
+
+		@keyframes ContactMe {
+			0%,20%,50%,80%,100% { transform: translateY(0); }
+			40% { transform: translateY(-15px); }
+			60% { transform: translateY(-10px); }
+		}
+
+		/* ======================= SOCIAL SECTION ======================= */
+		.social-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.social-section .intro-text {
+			font-size: 14px;
+			text-align: center;
+		}
+
+		/* Icônes sociales */
+		#Contact, .social-right {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.social-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.04);
+			transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+			text-decoration: none;
+			overflow: hidden;
+		}
+
+		.social-icon img {
+			width: 28px;
+			height: 28px;
+			display: block;
+		}
+
+		.social-icon:hover {
+			transform: translateY(-6px) scale(1.04);
+			background: rgba(255,255,255,0.08);
+			box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+		}
+
+		/* Copyright */
+		.copyright {
+			font-size: 15px;
+			color: rgba(11,11,11,0.85);
+			margin-top: 15px;
+		}
+
+		#ContaineTextRobo {
+			display: flex;
+			align-items: center;
+			gap: 60px;
+			margin-left: 50px;
+		}
+
+		.cadre-link {
+			text-decoration: none;
+			color: inherit;
+			display: block;
+		}
+
+		/* ======================= RESPONSIVE ======================= */
+		@media (max-width: 480px) {
+			#pre {
+				font-size: 12px;
+			}
+			#ContainerProjects {
+				grid-template-columns: 1fr;
+				width: 100%;
+			}
+			.img {
+				visibility: visible;
+				opacity: 1;
+			}
+			#Projet1, #Projet2, #Projet3, #Projet4, #Projet5, #Projet6, #Projet7, #Projet8 {
+				grid-column: 1 / 4;
+			}
+		}
+
+		@media (min-width: 481px) and (max-width: 768px) {
+			#pre {
+				font-size: 16px;
+			}
+			#ContainerProjects {
+				grid-template-columns: repeat(2, 1fr);
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+			#Projet2 {
+				grid-column: 2/4;
+			}
+			#Projet3 {
+				grid-row: 2/3;
+				grid-column: 1/3;
+			}
+			#Projet4 {
+				grid-row: 2/3;
+				grid-column: 3/4;
+			}
+			#Projet5 {
+				grid-row: 3/4;
+				grid-column: 1/2;
+			}
+			#Projet6 {
+				grid-row: 3/4;
+				grid-column: 2/4;
+			}
+			#Projet7 {
+				grid-row: 4/5;
+				grid-column: 1/2;
+			}
+			#Projet8 {
+				grid-row: 4/5;
+				grid-column: 2/4;
+			}
+			.img {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+
+		@media (min-width: 769px) and (max-width: 1200px) {
+			#ContainerProjects {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
+
+		@media (min-width: 1201px) {
+			#ContainerProjects {
+				grid-template-columns: repeat(4, 1fr);
+				margin: auto;
+				max-width: 1200px;
+			}
+		}
+
+
+		/* Animation d'arrivée + zoom + léger balancement */
+.intro-photo {
+    opacity: 0;
+    animation: introFade 1.8s ease-out forwards, photoFloat 6s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+/* Apparition + slide + zoom */
+@keyframes introFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9) rotate(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(10deg);
+    }
+}
+
+/* Balancement + zoom très léger */
+@keyframes photoFloat {
+    0% {
+        transform: rotate(9deg) scale(1);
+    }
+    50% {
+        transform: rotate(11deg) scale(1.02);
+    }
+    100% {
+        transform: rotate(9deg) scale(1);
+    }
+}
+
+
+		
+	</style>
+</head>
+
+<body>
+
+	<!-- ====== HEADER ====== -->
+	<header id="header">
+		<a href="PortFolio.html">
+			<img id="logo" src="../icon/OOOOO.png" alt="logo" width="50" height="50">
+		</a>
+		<a href="PortFolio.html" id="PortFolio">PortFolio</a>
+		<div>
+			<a href="About.html" class="about-contact">À propos</a>
+			<a href="Contact.html" class="about-contact">Contact</a>
+		</div>
+	</header>
+
+	<!-- ====== INTRODUCTION SECTION ====== -->
+	<div id="ContaineTextRobo">
+		<div class="pre">
+			<img 
+    src="../Image/Ouattara 1.jpg" 
+    alt="Photo de profil"
+    class="intro-photo"
+    style="
+        float: right; 
+        margin-left: 200px; 
+        width: 300px; 
+        transform: rotate(10deg);
+        margin-top: 150px;
+    "
+>
+
+		</div>
+		<div>
+			<h1 id="pre" style="margin-bottom: 5px; font-size: 40px;">
+				Dongui OUATTARA,<br>
+				Étudiant en développement Web
+			</h1>
+			<p id="pre" style="margin-top: 10px;">
+				Bienvenue sur mon portfolio. <br>
+				Ici vous découvrirez mes premiers projets en développement web,<br>
+				qui reflètent ma curiosité et ma créativité.
+			</p>
+		</div>
+	</div>
+
+	<!-- ====== PROJECTS SECTION ====== -->
+	<div>
+		<p id="projects">Projets</p>
+	</div>
+
+	<div id="ContainerProjects">
+		<a href="../Page-projet/projet1.html" class="cadre-link" id="Projet1">
+			<div class="Cadre" style="background-color: antiquewhite;">
+				<img class="img" src="../Image/projet1/IMAGE 4.png">
+				<h1>Outil de Suivi des Candidatures</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet2.html" class="cadre-link" id="Projet2">
+			<div class="Cadre" style="background-color: rgb(81, 189, 197);">
+				<img class="img" src="../Image/projet2/IMAGE 4.png">
+				<h1>Reddit Clone – Plateforme Communautaire</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet3.html" class="cadre-link" id="Projet3">
+			<div class="Cadre" style="background-color: aquamarine;">
+				<img class="img" src="../Image/projet3/IMAGE 4.png">
+				<h1>Générateur de Nombres Premiers</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet4.html" class="cadre-link" id="Projet4">
+			<div class="Cadre" style="background-color: rgb(186, 196, 219);">
+				<img class="img" src="../Image/projet4/IMAGE 4.png">
+				<h1>Éditeur Markdown – Dashboard Old School</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet5.html" class="cadre-link" id="Projet5">
+			<div class="Cadre" style="background-color: rgb(19, 123, 106);">
+				<img class="img" src="../Image/projet5/IMAGE 4.png">
+				<h1>Portfolio Design – Figma</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet6.html" class="cadre-link" id="Projet6">
+			<div class="Cadre" style="background-color: rgb(174, 229, 170);">
+				<img class="img" src="../Image/projet6/IMAGE 4.jpg">
+				<h1>Génération d’Images par IA</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet7.html" class="cadre-link" id="Projet7">
+			<div class="Cadre" style="background-color: rgb(154, 244, 147);">
+				<img class="img" src="../Image/projet7/IMAGE 4.png">
+				<h1>Jeu Unity – Course & Obstacles</h1>
+			</div>
+		</a>
+
+		<a href="../Page-projet/projet8.html" class="cadre-link" id="Projet8">
+			<div class="Cadre" style="background-color: rgb(168, 201, 173);">
+				<img class="img" src="../Image/projet8/IMAGE 4.png">
+				<h1>Portfolio HTML/CSS</h1>
+			</div>
+		</a>
+	</div>
+
+	<!-- ====== FOOTER ====== -->
+	<footer>
+		<div class="contact-left">
+			<p id="ContactMe">Contactez-moi !</p>
+			<div id="Contact">
+				<a href="mailto:ouattaradongui123@gmail.com" target="_blank" class="social-icon">
+					<img src="../icon/mail-icon.png" width="50" alt="Courriel">
+				</a>
+			</div>
+		</div>
+
+		<div class="social-section">
+			<p class="intro-text">
+				Passionné par le développement et la création de projets innovants,<br>
+				n'hésitez pas à me contacter via mes réseaux sociaux !
+			</p>
+		</div>
+
+		<div class="social-right">
+			<a href="https://www.linkedin.com/in/dongui-ouattara-917b71338" target="_blank" class="social-icon">
+				<img src="../icon/linkedin-icon.png" width="50" alt="LinkedIn">
+			</a>
+			<a href="https://discord.com/users/1297865220013817947" target="_blank" class="social-icon">
+				<img src="../icon/discord-icon.png" width="50" alt="Discord">
+			</a>
+			<a href="https://github.com/xavi-ouattaradongui" target="_blank" class="social-icon">
+				<img src="../icon/github-icon.png" width="50" alt="GitHub">
+			</a>
+			<a href="https://www.instagram.com/xvi21_3?igsh=MWNmOHlsOXU0cGF3aA%3D%3D&utm_source=qr" target="_blank" class="social-icon">
+				<img src="../icon/Instagram-icon.png" width="50" alt="Instagram">
+			</a>
+		</div>
+
+		<p class="copyright">© 2025 Dongui OUATTARA. Tous droits réservés.</p>
+	</footer>
+
+</body>
+</html>

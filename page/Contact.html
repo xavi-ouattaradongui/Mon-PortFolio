@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Contact - Dongui OUATTARA">
+	<meta name="author" content="Dongui OUATTARA">
+	<meta name="keywords" content="Contact, Portfolio, Développeur Web">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>Contact - Dongui OUATTARA</title>
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			font-family: 'Inter', Arial, sans-serif;
+			background: linear-gradient(135deg, #fef9f3, #e8f0fb, #fff1e6, #fbe8f0, #f0fff9);
+			color: #333;
+			overflow-x: hidden;
+			background-size: 400% 400%;
+			animation: gradientShift 15s ease infinite;
+		}
+
+		/* Animation subtile pour un effet vivant */
+		@keyframes gradientShift {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+
+		/* ====== FORM WRAPPER CARD ====== */
+		.container {
+			width: 600px;
+			margin: 80px auto;
+			background: #fff;
+			padding: 40px;
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+		}
+
+		/* ====== TITLE ====== */
+		h2 {
+			text-align: center;
+			margin-bottom: 10px;
+			font-size: 28px;
+			font-weight: 600;
+			animation: ContactMe 2s infinite;
+			color: #fda766;
+		}
+
+		.subtitle {
+			text-align: center;
+			margin-bottom: 30px;
+			color: #666;
+		}
+
+		/* ====== ROW LAYOUT ====== */
+		.row {
+			display: flex;
+			gap: 20px;
+			margin-bottom: 20px;
+		}
+
+		.input-group {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+		}
+
+		/* ====== LABEL ====== */
+		label {
+			font-size: 13px;
+			font-weight: 600;
+			color: #444;
+			margin-bottom: 6px;
+		}
+
+		/* ====== INPUTS & TEXTAREA ====== */
+		input,
+		textarea {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #e5e5e5;
+			border-radius: 6px;
+			background: #fafafa;
+			font-size: 14px;
+			transition: 0.2s ease;
+		}
+
+		input::placeholder,
+		textarea::placeholder {
+			color: #c9c9c9;
+		}
+
+		input:focus,
+		textarea:focus {
+			border-color: #fda766;
+			background: #fff;
+			outline: none;
+		}
+
+		/* ====== BUTTON ====== */
+		button {
+			display: block;
+			margin: 20px auto 0;
+			width: 100%;
+			max-width: 400px;
+			background: linear-gradient(135deg, #ff7e5f, #feb47b);
+			color: white;
+			padding: 14px 35px;
+			border: none;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 15px;
+			letter-spacing: 0.5px;
+			text-decoration: none;
+			transition: all 0.4s ease;
+			box-shadow: 0 8px 25px rgba(255,126,95,0.4);
+			position: relative;
+			overflow: hidden;
+		}
+
+		button::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255,0.3);
+			transform: skewX(-25deg);
+			transition: 0.6s;
+		}
+
+		button:hover::before {
+			left: 100%;
+		}
+
+		button:hover {
+			transform: translateY(-5px) scale(1.03);
+			box-shadow: 0 12px 35px rgba(255,126,95,0.6);
+			background: linear-gradient(135deg, #ff6a4a, #fda766);
+		}
+
+		/* ====== LOGO ====== */
+		#logo {
+			margin-left: 10px;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		#logo:hover {
+			transform: rotate(360deg) scale(1.2);
+			box-shadow: 0 0 20px #fda766;
+			border-radius: 360px;
+		}
+
+		/* ====== SOCIAL SECTION ====== */
+		.social-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.04);
+			transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+			text-decoration: none;
+			overflow: hidden;
+		}
+
+		.social-icon img {
+			width: 28px;
+			height: 28px;
+			display: block;
+		}
+
+		.social-icon:hover,
+		.social-icon:focus {
+			transform: translateY(-6px) scale(1.04);
+			background: rgba(255,255,255,0.08);
+			box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+			outline: none;
+		}
+
+		.social-icon:focus-visible {
+			box-shadow: 0 0 0 4px rgba(66,153,225,0.18), 0 10px 28px rgba(0,0,0,0.35);
+		}
+
+		.social-right {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		/* ====== ANIMATIONS ====== */
+		@keyframes ContactMe {
+			0%, 20%, 50%, 80%, 100% {
+				transform: translateY(0);
+			}
+			40% {
+				transform: translateY(-15px);
+			}
+			60% {
+				transform: translateY(-10px);
+			}
+		}
+
+		/* ====== BACK HOME BUTTON ====== */
+		.back-home-container {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		.back-home-btn {
+			color: #fda766;
+			text-decoration: none;
+			font-weight: 600;
+			transition: color 0.3s ease;
+		}
+
+		.back-home-btn:hover {
+			color: #ff6a4a;
+		}
+
+		/* ======================= RESPONSIVE ======================= */
+		@media (max-width: 768px) {
+			.container {
+				width: 90%;
+				margin: 40px auto;
+				padding: 20px;
+			}
+			.row {
+				flex-direction: column;
+				gap: 0;
+			}
+		}
+
+		@media (max-width: 900px) {
+			.section {
+				grid-template-columns: 1fr;
+			}
+			.header.fade-up h1 {
+				font-size: 38px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ====== LOGO ====== -->
+	<div class="container">
+		<a href="PortFolio.html">
+			<img id="logo" src="../icon/OOOOO.png" alt="Logo de Dongui OUATTARA" width="100" height="100" style="display: block; margin: 0 auto;">
+		</a>
+
+		<!-- ====== CONTACT FORM ====== -->
+		<h2>Contactez-moi !</h2>
+		<p class="subtitle">N'hésitez pas à me contacter en remplissant le formulaire ci-dessous.</p>
+
+		<form action="https://formspree.io/f/meodlzpd" method="POST">
+			<div class="row">
+				<div class="input-group">
+					<label for="firstname">Prénom</label>
+					<input id="firstname" type="text" name="firstname" placeholder="Veuillez entrer votre prénom..." required>
+				</div>
+
+				<div class="input-group">
+					<label for="lastname">Nom</label>
+					<input id="lastname" type="text" name="lastname" placeholder="Veuillez entrer votre nom..." required>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-group">
+					<label for="email">Email</label>
+					<input id="email" type="email" name="email" placeholder="Veuillez entrer votre email..." required>
+				</div>
+
+				<div class="input-group">
+					<label for="phone">Téléphone</label>
+					<input id="phone" type="tel" name="phone" placeholder="Veuillez entrer votre numéro...">
+				</div>
+			</div>
+
+			<div class="input-group">
+				<label for="message">Message</label>
+				<textarea id="message" name="message" rows="5" placeholder="Veuillez entrer votre message..." required></textarea>
+			</div>
+
+			<button type="submit">Envoyer</button>
+		</form>
+
+		<!-- ====== SOCIAL ICONS ====== -->
+		<div class="social-right">
+			<a href="https://www.linkedin.com/in/dongui-ouattara-917b71338" target="_blank" class="social-icon">
+				<img src="../icon/linkedin-icon.png" width="50" alt="LinkedIn">
+			</a>
+			<a href="https://discord.com/users/1297865220013817947" target="_blank" class="social-icon">
+				<img src="../icon/discord-icon.png" width="50" alt="Discord">
+			</a>
+			<a href="https://github.com/xavi-ouattaradongui" target="_blank" class="social-icon">
+				<img src="../icon/github-icon.png" width="50" alt="GitHub">
+			</a>
+			<a href="https://www.instagram.com/xvi21_3?igsh=MWNmOHlsOXU0cGF3aA%3D%3D&utm_source=qr" target="_blank" class="social-icon">
+				<img src="../icon/Instagram-icon.png" width="50" alt="Instagram">
+			</a>
+		</div>
+
+		<!-- ====== BACK HOME BUTTON ====== -->
+		<div class="back-home-container">
+			<a href="PortFolio.html" class="back-home-btn">← Retour à l'accueil</a>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="À propos de Dongui OUATTARA">
+	<meta name="author" content="Dongui OUATTARA">
+	<meta name="keywords" content="About, Portfolio, Web Developer">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>À propos - Dongui OUATTARA</title>
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			font-family: 'Inter', Arial, sans-serif;
+			background: linear-gradient(135deg, #fef9f3, #e8f0fb, #fff1e6, #fbe8f0, #f0fff9);
+			color: #333;
+			overflow-x: hidden;
+			background-size: 400% 400%;
+			animation: gradientShift 15s ease infinite;
+		}
+
+		/* Animation subtile pour un effet vivant */
+		@keyframes gradientShift {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+
+		/* En-tête */
+		#header {
+			display: flex;
+			justify-content: space-between;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			border-radius: 30px;
+			margin: 30px 50px 0 40px;
+			padding: 10px 16px;
+			height: auto;
+			animation: slideInDown 1.5s ease-out;
+			align-items: center;
+		}
+
+		/* Logo */
+		#logo {
+			margin-left: 10px;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		#logo:hover {
+			transform: rotate(360deg) scale(1.2);
+			box-shadow: 0 0 20px #fda766;
+			border-radius: 360px;
+		}
+
+		/* Titre "Portfolio" */
+		#PortFolio {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		#PortFolio:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* Navigation links */
+		.about-contact {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		.about-contact:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* ====== SECTION À PROPOS ====== */
+		.about-section {
+			width: 100%;
+			padding: 80px 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		.about-container {
+			width: 85%;
+			max-width: 1000px;
+			display: flex;
+			align-items: center;
+			gap: 60px;
+			flex-wrap: wrap;
+		}
+
+		/* ====== IMAGE ====== */
+		.about-photo {
+			flex: 1 1 250px;
+			display: flex;
+			justify-content: center;
+		}
+
+		.about-photo img {
+			width: 280px;
+			height: auto;
+			border-radius: 20px;
+			object-fit: cover;
+			box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+			opacity: 0;
+			transform: translateX(-40px);
+			animation: slideLeft 1s ease forwards;
+		}
+
+		/* ====== CONTENU ====== */
+		.about-content {
+			flex: 2 1 400px;
+			max-width: 600px;
+			opacity: 0;
+			transform: translateY(30px);
+			animation: fadeUp 1s ease forwards;
+			animation-delay: 0.3s;
+		}
+
+		.about-subtitle {
+			font-size: 14px;
+			letter-spacing: 3px;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin-bottom: 10px;
+			color: #fda766;
+		}
+
+		.about-title {
+			font-size: 32px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.about-content p {
+			font-size: 15px;
+			line-height: 1.8;
+			margin-bottom: 15px;
+			opacity: 0;
+			transform: translateY(20px);
+			animation: fadeUpText 0.8s ease forwards;
+		}
+
+		.about-content p:nth-of-type(1) { animation-delay: 0.4s; }
+		.about-content p:nth-of-type(2) { animation-delay: 0.6s; }
+		.about-content p:nth-of-type(3) { animation-delay: 0.8s; }
+		.about-content p:nth-of-type(4) { animation-delay: 1s; }
+
+		.goal {
+			font-style: italic;
+			font-weight: 500;
+			margin: 20px 0;
+			color: #fda766;
+			opacity: 0;
+			transform: translateY(20px);
+			animation: fadeUpText 0.8s ease forwards;
+			animation-delay: 1.2s;
+		}
+
+		/* ====== BOUTON MODERNE – CORAIL ====== */
+		.btn-cv {
+			display: inline-block;
+			background: linear-gradient(135deg, #ff7e5f, #feb47b);
+			color: white;
+			padding: 14px 35px;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 15px;
+			letter-spacing: 0.5px;
+			text-decoration: none;
+			transition: all 0.4s ease;
+			box-shadow: 0 8px 25px rgba(255,126,95,0.4);
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* Onde lumineuse */
+		.btn-cv::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255,0.3);
+			transform: skewX(-25deg);
+			transition: 0.6s;
+		}
+
+		.btn-cv:hover::before {
+			left: 100%;
+		}
+
+		/* Hover fluide */
+		.btn-cv:hover {
+			transform: translateY(-5px) scale(1.03);
+			box-shadow: 0 12px 35px rgba(255,126,95,0.6);
+			background: linear-gradient(135deg, #ff6a4a, #fda766);
+		}
+
+		/* ====== ANIMATIONS ====== */
+		@keyframes slideLeft {
+			to { opacity: 1; transform: translateX(0); }
+		}
+
+		@keyframes fadeUp {
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@keyframes fadeUpText {
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		/* ======================= FOOTER ======================= */
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			margin-top: 100px;
+			padding: 12px 20px;
+		}
+
+		/* Contact "Contact Me" animé */
+		#ContactMe {
+			font-size: 30px;
+			animation: ContactMe 2s infinite;
+			text-align: center;
+			color: #fda766;
+		}
+
+		#ContactMe:hover {
+			transform: scale(1.2);
+			text-shadow: 0 0 10px white;
+		}
+
+		@keyframes ContactMe {
+			0%,20%,50%,80%,100% { transform: translateY(0); }
+			40% { transform: translateY(-15px); }
+			60% { transform: translateY(-10px); }
+		}
+
+		/* ======================= SOCIAL SECTION ======================= */
+		.social-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.social-section .intro-text {
+			font-size: 14px;
+			text-align: center;
+		}
+
+		/* Icônes sociales */
+		#Contact, .social-right {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.social-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.04);
+			transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+			text-decoration: none;
+			overflow: hidden;
+		}
+
+		.social-icon img {
+			width: 28px;
+			height: 28px;
+			display: block;
+		}
+
+		.social-icon:hover {
+			transform: translateY(-6px) scale(1.04);
+			background: rgba(255,255,255,0.08);
+			box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+		}
+
+		/* Copyright */
+		.copyright {
+			font-size: 15px;
+			color: rgba(11,11,11,0.85);
+			margin-top: 15px;
+		}
+
+		/* ======================= RESPONSIVE ======================= */
+		@media (max-width: 768px) {
+			.about-container {
+				flex-direction: column;
+				text-align: center;
+			}
+			.about-photo img {
+				width: 200px;
+			}
+			.about-content {
+				padding: 0;
+			}
+		}
+
+		@media (max-width: 900px) {
+			.section {
+				grid-template-columns: 1fr;
+			}
+			.header.fade-up h1 {
+				font-size: 38px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ====== HEADER ====== -->
+	<header id="header">
+		<a href="PortFolio.html">
+			<img id="logo" src="../icon/OOOOO.png" alt="logo" width="50" height="50">
+		</a>
+		<a href="PortFolio.html" id="PortFolio">PortFolio</a>
+		<div>
+			<a href="PortFolio.html" class="about-contact">Accueil</a>
+			<a href="Contact.html" class="about-contact">Contact</a>
+		</div>
+	</header>
+
+	<!-- ====== ABOUT SECTION ====== -->
+	<section class="about-section">
+		<div class="about-container">
+			<div class="about-photo">
+				<img src="../Image/Ouattara 2.jpg" alt="Photo de profil">
+			</div>
+
+			<div class="about-content">
+				<h5 class="about-subtitle">À propos</h5>
+				<h1 class="about-title">À PROPOS DE MOI</h1>
+
+				<p>Je suis passionné par le développement web, animé par l'envie de créer des sites modernes, clairs et agréables à utiliser.</p>
+
+				<p>Mon parcours m'a permis d'acquérir des bases solides en front‑end et en back‑end, et j'explore continuellement de nouvelles technologies pour améliorer mes compétences.</p>
+
+				<p>Je suis curieux, patient et persévérant ; j'aime résoudre des problèmes et apprendre par la pratique.</p>
+
+				<p>Mon ambition est de continuer à progresser dans le développement web, participer à des projets concrets et créer des expériences utilisateurs soignées.</p>
+
+				<p class="goal">J'aime transformer des idées en expériences web simples, intuitives et remplies de sens.</p>
+
+				<a href="../CV/CV_2025-_DONGUIOUATTARA.pdf" class="btn-cv" download>Télécharger mon CV</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- ====== FOOTER ====== -->
+	<footer>
+		<div class="contact-left">
+			<p id="ContactMe">Contactez-moi !</p>
+			<div id="Contact">
+				<a href="mailto:ouattaradongui123@gmail.com" target="_blank" class="social-icon">
+					<img src="../icon/mail-icon.png" width="50" alt="Courriel">
+				</a>
+			</div>
+		</div>
+
+		<div class="social-section">
+			<p class="intro-text">
+				Passionné par le développement et la création de projets innovants,<br>
+				n'hésitez pas à me contacter via mes réseaux sociaux !
+			</p>
+		</div>
+
+		<div class="social-right">
+			<a href="https://www.linkedin.com/in/dongui-ouattara-917b71338" target="_blank" class="social-icon">
+				<img src="../icon/linkedin-icon.png" width="50" alt="LinkedIn">
+			</a>
+			<a href="https://discord.com/users/1297865220013817947" target="_blank" class="social-icon">
+				<img src="../icon/discord-icon.png" width="50" alt="Discord">
+			</a>
+			<a href="https://github.com/xavi-ouattaradongui" target="_blank" class="social-icon">
+				<img src="../icon/github-icon.png" width="50" alt="GitHub">
+			</a>
+			<a href="https://www.instagram.com/xvi21_3?igsh=MWNmOHlsOXU0cGF3aA%3D%3D&utm_source=qr" target="_blank" class="social-icon">
+				<img src="../icon/Instagram-icon.png" width="50" alt="Instagram">
+			</a>
+		</div>
+
+		<p class="copyright">© 2025 Dongui OUATTARA. Tous droits réservés.</p>
+	</footer>
+
+</body>
+</html>
+
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Portfolio de Dongui OUATTARA">
+	<meta name="author" content="Dongui OUATTARA">
+	<meta name="keywords" content="Portfolio, Développeur Web, Projets, HTML, CSS">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue - Dongui OUATTARA</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #fef9f3, #e8f0fb, #fff1e6, #fbe8f0, #f0fff9);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #333;
+      transition: opacity 0.8s ease;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Logo animation */
+    #logo {
+      width: 250px;
+      height: 250px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 1.5s ease;
+    }
+
+    /* Animation de rebond du logo */
+    @keyframes bounceLogo {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1) rotate(5deg); }
+      50% { transform: scale(0.95) rotate(-5deg); }
+      75% { transform: scale(1.05) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* Texte principal animation : fondu + montée */
+    .welcome-text {
+      margin-top: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1.5s ease;
+      font-size: 2rem;
+    }
+
+    /* Sous-texte animation : fondu + montée */
+    .subtext {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 1.5s ease;
+    }
+
+    /* Petit texte en bas */
+    .footer-text {
+      margin-top: 40px;
+      font-size: 1rem;
+      color: #555;
+      opacity: 0;
+      transition: all 1.5s ease;
+    }
+
+    a {
+      color: #fda766;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <img id="logo" src="icon/OOOOO.png" alt="Logo de Dongui OUATTARA">
+  <div class="welcome-text">Bienvenue sur mon portfolio — Dongui OUATTARA</div>
+  <div class="subtext">Découvrez mes projets et réalisations.</div>
+  <div class="footer-text">Merci de votre visite !</div>
+
+  <script>
+    const logo = document.getElementById('logo');
+    const welcomeText = document.querySelector('.welcome-text');
+    const subtext = document.querySelector('.subtext');
+    const footerText = document.querySelector('.footer-text');
+
+    // Logo apparaît et rebond
+    setTimeout(() => {
+      logo.style.opacity = '1';
+      logo.style.transform = 'scale(1)';
+      logo.style.animation = 'bounceLogo 1.5s ease forwards';
+    }, 500);
+
+    // Texte principal
+    setTimeout(() => {
+      welcomeText.style.opacity = '1';
+      welcomeText.style.transform = 'translateY(0)';
+    }, 2000);
+
+    // Sous-texte
+    setTimeout(() => {
+      subtext.style.opacity = '1';
+      subtext.style.transform = 'translateY(0)';
+    }, 3500);
+
+    // Footer texte
+    setTimeout(() => {
+      footerText.style.opacity = '1';
+    }, 5000);
+
+    // Redirection après 10 secondes (chemin relatif)
+    setTimeout(() => {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'page/PortFolio.html';
+      }, 800);
+    }, 10000);
+  </script>
+</body>
+</html>
+
+
+

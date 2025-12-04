@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet</title>
+	<style>
+        :root {
+            --muted: #666;
+            --accent: #fda766;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.15);
+            --glass: rgba(255,255,255,0.04);
+        }
+
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			font-family: 'Inter', Arial, sans-serif;
+			background: linear-gradient(135deg, #fef9f3, #e8f0fb, #fff1e6, #fbe8f0, #f0fff9);
+			color: #333;
+			overflow-x: hidden;
+			background-size: 400% 400%;
+			animation: gradientShift 15s ease infinite;
+		}
+
+		/* Animation subtile pour un effet vivant */
+		@keyframes gradientShift {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+
+		/* En-tête */
+		#header {
+			display: flex;
+			justify-content: space-between;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			border-radius: 30px;
+			margin: 30px 50px 0 40px;
+			padding: 10px 16px;
+			height: auto;
+			animation: slideInDown 1.5s ease-out;
+			align-items: center;
+		}
+
+		/* Logo */
+		#logo {
+			margin-left: 10px;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		#logo:hover {
+			transform: rotate(360deg) scale(1.2);
+			box-shadow: 0 0 20px #fda766;
+			border-radius: 360px;
+		}
+
+		/* Titre "Portfolio" */
+		#PortFolio {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		#PortFolio:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* Navigation links */
+		.about-contact {
+			color: rgb(131, 140, 147);
+			font-size: 16px;
+			text-shadow: 2px 2px 20px black;
+			padding-right: 30px;
+			transition: transform 0.3s ease, color 0.3s ease;
+			text-decoration: none;
+		}
+
+		.about-contact:hover {
+			transform: scale(1.5);
+			color: #fda766;
+		}
+
+		/* ======================= FOOTER ======================= */
+		footer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: transparent;
+			backdrop-filter: blur(80px);
+			box-shadow: 0 0 20px rgba(0,0,0,0.2);
+			border: 2px solid rgba(0,0,0,0.12);
+			margin-top: 100px;
+			padding: 12px 20px;
+		}
+
+		/* Contact "Contact Me" animé */
+		#ContactMe {
+			font-size: 30px;
+			animation: ContactMe 2s infinite;
+			text-align: center;
+			color: #fda766;
+		}
+
+		#ContactMe:hover {
+			transform: scale(1.2);
+			text-shadow: 0 0 10px white;
+		}
+
+		@keyframes ContactMe {
+			0%,20%,50%,80%,100% { transform: translateY(0); }
+			40% { transform: translateY(-15px); }
+			60% { transform: translateY(-10px); }
+		}
+
+		/* ======================= SOCIAL SECTION ======================= */
+		.social-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.social-section .intro-text {
+			font-size: 14px;
+			text-align: center;
+		}
+
+		/* Icônes sociales */
+		#Contact, .social-right {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.social-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 52px;
+			height: 52px;
+			border-radius: 50%;
+			background: rgba(255,255,255,0.04);
+			transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+			box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+			text-decoration: none;
+			overflow: hidden;
+		}
+
+		.social-icon img {
+			width: 28px;
+			height: 28px;
+			display: block;
+		}
+
+		.social-icon:hover {
+			transform: translateY(-6px) scale(1.04);
+			background: rgba(255,255,255,0.08);
+			box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+		}
+
+		/* Copyright */
+		.copyright {
+			font-size: 15px;
+			color: rgba(11,11,11,0.85);
+			margin-top: 15px;
+		}
+
+		/* ======================= RESPONSIVE ======================= */
+		@media (max-width: 768px) {
+			.section {
+				grid-template-columns: 1fr;
+				padding: 0 20px;
+			}
+		}
+
+		@media (max-width: 900px) {
+			.section {
+				grid-template-columns: 1fr;
+			}
+			.header.fade-up h1 {
+				font-size: 38px;
+			}
+		}
+
+
+
+        .container {
+  max-width: 1150px;
+  margin: 48px auto;
+  padding: 28px;
+}
+
+/* ---- HEADER ---- */
+header {
+  text-align: center;
+  padding: 8px 16px 36px;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-25px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInDown {
+  0% { transform: translateY(-25px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+header .meta {
+  color: var(--muted);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+header .lead {
+  color: var(--muted);
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 17px;
+}
+
+/* ---- HERO ---- */
+.hero {
+  width: 100%;
+  max-width: 1150px;   /* limite sur grand écran */
+  height: auto;
+  aspect-ratio: 16 / 6; /* garde un ratio propre */
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: 0.4s ease;
+  margin: 30px auto 40px;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ---- GRID LAYOUT ---- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ---- TITLES ---- */
+h2.section {
+  font-size: 25px;
+  margin: 30px 0 12px;
+  font-weight: 700;
+  position: relative;
+}
+
+h2.section::after {
+  content: "";
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* ---- SCREENSHOTS ---- */
+.screenshots {
+  display: flex;
+  gap: 20px;
+  margin: 22px 0;
+}
+
+.screenshot {
+  .screenshot {
+  flex: 1;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: var(--shadow);
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+
+  /* ========== IMPORTANT ========== */
+  overflow: hidden;  /* l’image reste dans le card */
+  position: relative;
+}
+
+}
+
+.screenshot:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+@keyframes fadeUp {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.screenshot img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;     /* remplit parfaitement le card */
+  transition: 0.35s ease;
+}
+
+.screenshot img:hover {
+  transform: scale(2); /* un beau zoom qui reste dans le card */
+}
+
+
+/* ---- TECH LIST ---- */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.tech-list li {
+  background: white;
+  border: 1px solid #e4e9f0;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.tech-list li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ---- FEATURES ---- */
+.features {
+  padding-left: 22px;
+}
+
+.features li {
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.features li::before {
+  content: \"✔\";
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--glass);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid #e7ecf3;
+  box-shadow: var(--shadow);
+  animation: fadeUp 1s ease;
+}
+
+.card ul {
+  padding-left: 18px;
+}
+
+/* ---- LINKS ---- */
+.links a {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #e6edf3;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+  background: #fff;
+  transition: 0.3s ease;
+}
+
+.links a:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-3px);
+}
+
+
+
+/* Classe pour texte petit */
+.small {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* ====== BACK BUTTON ====== */
+		.back-button {
+			display: block;
+			margin: 20px auto 0;
+			width: 100%;
+			max-width: 200px;
+			background: linear-gradient(135deg, #ff7e5f, #feb47b);
+			color: white;
+			padding: 14px 35px;
+			border: none;
+			border-radius: 50px;
+			font-weight: 600;
+			font-size: 15px;
+			letter-spacing: 0.5px;
+			text-decoration: none;
+			transition: all 0.4s ease;
+			box-shadow: 0 8px 25px rgba(255,126,95,0.4);
+			position: relative;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		.back-button::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: rgba(255,255,255,0.3);
+			transform: skewX(-25deg);
+			transition: 0.6s;
+		}
+
+		.back-button:hover::before {
+			left: 100%;
+		}
+
+		.back-button:hover {
+			transform: translateY(-5px) scale(1.03);
+			box-shadow: 0 12px 35px rgba(255,126,95,0.6);
+			background: linear-gradient(135deg, #ff6a4a, #fda766);
+		}
+	</style>
+</head>
+<body>
+    <!-- ====== HEADER ====== -->
+	<header id="header">
+		<a href="../page/PortFolio.html">
+			<img id="logo" src="../icon/OOOOO.png" alt="logo" width="50" height="50">
+		</a>
+		<a href="../page/PortFolio.html" id="PortFolio">PortFolio</a>
+		<div>
+			<a href="../page/About.html" class="about-contact">About Me</a>
+			<a href="../page/Contact.html" class="about-contact">Contact</a>
+		</div>
+	</header>
+
+    <div class="container">
+    <header>
+  <h1 id="project-title">Exploration Créative des Capacités de l'IA dans l'Art Visuel</h1>
+  <div class="meta">2024 &nbsp;•&nbsp; Projet IA & Gestion de Projet</div>
+  <p class="lead">
+    Projet d’exploration artistique utilisant l’intelligence artificielle pour analyser différents niveaux de réalisme.
+    L’objectif : générer cinq images du cartoon à l’hyper-réalisme, comparer plusieurs générateurs d’IA, et produire
+    un tutoriel pédagogique expliquant comment utiliser un outil de génération d’images.
+  </p>
+</header>
+
+<div class="hero">
+  <img src="../Image/Projet6/IMAGE 4.jpg" alt="Illustration du projet IA" />
+</div>
+
+<section class="grid">
+  <main>
+
+    <h2 class="section">Description</h2>
+    <p class="small">
+      Ce projet consiste à étudier la capacité des générateurs d'images IA à créer des visuels avec différents niveaux
+      de réalisme. À partir d’un thème issu d’un film ou d’une série, cinq images ont été produites : cartoon, semi-réaliste,
+      stylisé réaliste, réaliste et hyper-réaliste. Une analyse critique accompagne chaque visuel, ainsi qu’un benchmark
+      comparant plusieurs outils. Un tutoriel détaillé a également été réalisé afin d’expliquer comment utiliser
+      un générateur d’images text-to-image.
+    </p>
+
+    <div class="screenshots">
+      <div class="screenshot"><img src="../Image/Projet6/IMAGE 1.png" alt="Niveau 1 - Cartoon" /></div>
+      <div class="screenshot"><img src="../Image/Projet6/IMAGE 3.png" alt="Niveau 2 - Semi-réaliste" /></div>
+      <div class="screenshot"><img src="../Image/Projet6/IMAGE 2.png" alt="Niveau 3 - Réaliste stylisé" /></div>
+    </div>
+
+    <h2 class="section">Technologies utilisées</h2>
+    <ul class="tech-list">
+      <li><strong>IA :</strong> Générateurs d’images (Midjourney, DALL·E, DeepAI…)</li>
+      <li><strong>Outils :</strong> Outils d’hébergement Web</li>
+      <li><strong>Production :</strong> Genially / Notion / Docs</li>
+      <li><strong>Gestion de Projet :</strong> Planification + organisation en étapes</li>
+    </ul>
+
+    <h2 class="section">Fonctionnalités principales</h2>
+    <ul class="features">
+      <li>Benchmark complet des générateurs IA</li>
+      <li>Création de 5 images avec niveaux de réalisme croissants</li>
+      <li>Analyse critique des images produites</li>
+      <li>Conception d’un tutoriel pédagogique illustré</li>
+      <li>Mise en ligne du rendu final sur un service d’hébergement</li>
+    </ul>
+
+    <h2 class="section">Fonctionnalités bonus</h2>
+    <ul class="features">
+      <li>Construction de prompts adaptés selon chaque outil IA</li>
+      <li>Réflexion artistique et narrative autour du thème choisi</li>
+    </ul>
+
+    <h2 class="section">Défis rencontrés</h2>
+    <ul class="features">
+      <li>Choisir un thème cohérent déclinable en plusieurs styles</li>
+      <li>Comprendre les différences entre générateurs IA</li>
+      <li>Optimiser les prompts pour obtenir des résultats utilisables</li>
+      <li>Maintenir une cohérence visuelle entre les différents niveaux de réalisme</li>
+      <li>Structurer un tutoriel clair et précis</li>
+    </ul>
+
+    <h2 class="section">Résultat final</h2>
+    <p class="small">
+      Le projet aboutit à cinq images représentatives de l’évolution du réalisme dans l’art généré par IA, 
+      accompagnées d’un benchmark détaillé et d’un tutoriel pédagogique complet. Cette production permet de 
+      comprendre comment les modèles génèrent les images et met en lumière leurs forces, limites et différences.
+    </p>
+
+    <h2 class="section">Liens</h2>
+    <div class="links">
+      <a href="https://view.genially.com/67363eb597c1d6c599423622/guide-livrable-ia" target="_blank" rel="noopener noreferrer">Rendu final</a>
+    </div>
+
+  </main>
+
+  <aside>
+
+    <div class="card">
+      <h3 style="margin-top:0;margin-bottom:8px">Rôle dans le projet</h3>
+      <p class="small">Tâches réalisées :</p>
+      <ul>
+        <li>Réalisation des 5 images (cartoon → hyper-réaliste)</li>
+        <li>Création du benchmark des générateurs IA</li>
+        <li>Analyse critique du niveau de réalisme</li>
+        <li>Conception du tutoriel pédagogique</li>
+        <li>Mise en ligne du projet</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h3 style="margin-top:0;margin-bottom:8px">Informations rapides</h3>
+      <p class="small"><strong>Durée :</strong> 1 semaine</p>
+      <p class="small"><strong>Équipe :</strong> 5 personnes</p>
+    </div>
+
+  </aside>
+</section>
+
+    <section class="conclusion section">
+
+		<a href="../Page/PortFolio.html" class="back-button">Back to Projects</a>
+	</section>
+</div>
+
+
+
+    <!-- ====== FOOTER ====== -->
+	<footer>
+		<div class="contact-left">
+			<p id="ContactMe">Contactez-moi !</p>
+			<div id="Contact">
+				<a href="mailto:ouattaradongui123@gmail.com" target="_blank" class="social-icon">
+					<img src="../icon/mail-icon.png" width="50" alt="Mail">
+				</a>
+			</div>
+		</div>
+
+		<div class="social-section">
+			<p class="intro-text">
+				Passionné par le développement et la création de projets innovants,<br>
+				n'hésitez pas à me contacter via mes réseaux sociaux !
+			</p>
+		</div>
+
+		<div class="social-right">
+			<a href="https://www.linkedin.com/in/dongui-ouattara-917b71338" target="_blank" class="social-icon">
+				<img src="../icon/linkedin-icon.png" width="50" alt="LinkedIn">
+			</a>
+			<a href="https://discord.com/users/1297865220013817947" target="_blank" class="social-icon">
+				<img src="../icon/discord-icon.png" width="50" alt="Discord">
+			</a>
+			<a href="https://github.com/xavi-ouattaradongui" target="_blank" class="social-icon">
+				<img src="../icon/github-icon.png" width="50" alt="GitHub">
+			</a>
+			<a href="https://www.instagram.com/xvi21_3?igsh=MWNmOHlsOXU0cGF3aA%3D%3D&utm_source=qr" target="_blank" class="social-icon">
+				<img src="../icon/Instagram-icon.png" width="50" alt="Instagram">
+			</a>
+		</div>
+
+        
+
+		<p class="copyright">© 2025 Dongui OUATTARA. Tous droits réservés.</p>
+        
+	</footer>
+</body>
+</html>
